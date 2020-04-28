@@ -151,19 +151,15 @@ class _HomeState extends State<Home> {
                     ],
                   ),
 
-                  SizedBox(height: kSizedBox,),
-                  ClipPath(
-                    clipper: WaveClipperTwo(reverse: true),
-                    child: Container(
-                      height: 120.0,
-                      color: kColorClipPath,
-                      alignment: Alignment.center,
-                      padding:const EdgeInsets.only(top: 40.0),
-                      child: Text(
-                        "$weatherMessage in $city!",
-                        style: kTextBottomStyle,
-                        textAlign: TextAlign.center,
-                      ),
+                  SizedBox(height: 100.0,),
+                  Container(
+                    color: kColorClipPath,
+                    alignment: Alignment.center,
+                    padding:const EdgeInsets.only(top: 20.0),
+                    child: Text(
+                      "$weatherMessage in $city!",
+                      style: kTextBottomStyle,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ],
