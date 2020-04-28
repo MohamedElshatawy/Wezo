@@ -154,8 +154,9 @@ class _HomeState extends State<Home> {
                   SizedBox(height: 100.0,),
                   Container(
                     color: kColorClipPath,
+                    height: 50.0,
                     alignment: Alignment.center,
-                    padding:const EdgeInsets.only(top: 20.0),
+                    padding:const EdgeInsets.only(top: 8.0),
                     child: Text(
                       "$weatherMessage in $city!",
                       style: kTextBottomStyle,
