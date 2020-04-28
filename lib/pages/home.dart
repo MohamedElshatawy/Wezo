@@ -53,117 +53,113 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          child: ListView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  ClipPath(
-                    child: Container(
-                      height: 95.0,
-                      color:kColorClipPath,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: IconButton(
-                              onPressed: () async{
-                                var location =await Navigator.push(context, MaterialPageRoute(builder: (context)=>LocationCity()));
-                                if(location!=null){
-                                  weatherData = await model.getCityWeather(location['city']);
-                                  dateTime=await model.getCityTime(location['continent']);
-                                  updateUi();
-                                }
-                              },
-                              icon: Icon(
-                                Icons.near_me,
-                                size: 40.0,
-                                color: kColor1,
-                              ),
-                            ),
+              ClipPath(
+                child: Container(
+                  height: 95.0,
+                  color:kColorClipPath,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: IconButton(
+                          onPressed: () async{
+                            var location =await Navigator.push(context, MaterialPageRoute(builder: (context)=>LocationCity()));
+                            if(location!=null){
+                              weatherData = await model.getCityWeather(location['city']);
+                              dateTime=await model.getCityTime(location['continent']);
+                              updateUi();
+                            }
+                          },
+                          icon: Icon(
+                            Icons.near_me,
+                            size: 40.0,
+                            color: kColor1,
                           ),
+                        ),
+                      ),
 
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: IconButton(
-                              onPressed: ()async {
-                                weatherData=await model.getWeather();
-                                dateTime=await model.getTime();
-                                updateUi();
-                              },
-                              icon: Icon(
-                                Icons.location_city,
-                                size: 40.0,
-                                color: kColor1,
-                              ),
-                            ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          onPressed: ()async {
+                            weatherData=await model.getWeather();
+                            dateTime=await model.getTime();
+                            updateUi();
+                          },
+                          icon: Icon(
+                            Icons.location_city,
+                            size: 40.0,
+                            color: kColor1,
                           ),
-                        ],
-                      ),
-                    ),
-                    clipper: WaveClipperTwo(),
-                  ),
-                  SizedBox(height: kSizedBox,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.timer,
-                      ),
-                      SizedBox(width: 20.0,),
-                      Text(
-                        '$time',
-                        style: kTextTimeStyle,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: kSizedBox,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.location_on,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(30.0),
-                        child: Text(
-                          '$city',
-                          style: kTextStyle,
                         ),
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Text(
-                        '$temperature °C',
-                        style: kDegreeStyle,
-                      ),
-                      SizedBox(width: kSizedBox,),
-                      Text(
-                        '$weatherIcon',
-                        style: kDegreeStyle,
-                      ),
-                    ],
+                ),
+                clipper: WaveClipperTwo(),
+              ),
+              SizedBox(height: kSizedBox,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.timer,
                   ),
-
-                  SizedBox(height: 100.0,),
-                  Container(
-                    color: kColorClipPath,
-                    height: 50.0,
-                    alignment: Alignment.center,
-                    padding:const EdgeInsets.only(top: 8.0),
+                  SizedBox(width: 20.0,),
+                  Text(
+                    '$time',
+                    style: kTextTimeStyle,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: kSizedBox,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.location_on,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
                     child: Text(
-                      "$weatherMessage in $city!",
-                      style: kTextBottomStyle,
-                      textAlign: TextAlign.center,
+                      '$city',
+                      style: kTextStyle,
                     ),
                   ),
                 ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text(
+                    '$temperature °C',
+                    style: kDegreeStyle,
+                  ),
+                  SizedBox(width: kSizedBox,),
+                  Text(
+                    '$weatherIcon',
+                    style: kDegreeStyle,
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 100.0,),
+              Container(
+                color: kColorClipPath,
+                height: 50.0,
+                alignment: Alignment.center,
+                padding:const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  "$weatherMessage in $city!",
+                  style: kTextBottomStyle,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ],
           ),
